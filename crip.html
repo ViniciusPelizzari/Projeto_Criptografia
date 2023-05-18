@@ -1,0 +1,235 @@
+<meta charset="UTF-8">
+
+<!--<h3 id="meu-elemento">Criptografia e descriptografia</h3>-->
+
+<style>
+    body {
+        background: linear-gradient(to bottom, #091c30, #2088cd);
+        font-family: sans-serif;
+        color: #fff;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .textarea-wrapper {
+        width: 440px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        margin-bottom: 15px;
+    }
+
+    textarea {
+        width: 100%;
+        height: 660px;
+        padding: 10px;
+        border: none;
+        font-size: 16px;
+        font-family: monospace;
+        resize: none;
+    }
+
+    button {
+        display: block;
+        margin: 10px auto;
+        border-radius: 5px;
+        background: linear-gradient(to bottom, #091c30, #2088cd);
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .button-wrapper {
+        display: flex;
+    }
+
+    .button-wrapper button {
+        margin: 0 10px;
+    }
+
+    strong {
+        color: black;
+    }
+
+    #data-hora {
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: 'monospace';
+        font-size: 16px;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        font-weight: monospace;
+    }
+
+    .coluna {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    #texto {
+        font-size: 16px;
+        font-family: monospace;
+    }
+
+
+</style>
+
+<div class="container">
+    <div class="textarea-wrapper">
+        <textarea id="input"></textarea>
+    </div>
+
+    <div class="coluna">
+        <div id="data-hora" class="text-center">
+            <!-- Conteúdo do elemento #data-hora -->
+        </div>
+        <div id="texto" style="font-size: 16px; font-family: monospace;">
+            <p>Olá, este projeto foi feito pelo programador Vinícius Pelizzari, <br>
+            na data de 12/04/2023. A finalidade deste código, era realizar um<br>
+            desafio proposto pelo programa <strong>One</strong>, sobre responsabilidade da <strong>Alura</strong><br> e patrocinado pela <strong>Oracle</strong>.</p>
+        </div>        
+    </div>
+
+    <div class="textarea-wrapper">
+        <textarea id="output"></textarea>
+    </div>
+</div>
+
+<div class="container">
+    <div class="button-wrapper container">
+        <button id="criptografar">CRIPTOGRAFAR</button>
+        <button id="descriptografar">DESCRIPTOGRAFAR</button>
+    </div>
+    <div class="button-wrapper container">
+        <button id="copiar" onclick="copiar()">COPIAR</button>
+        <button id="limpar">LIMPAR</button>
+    </div>
+</div>
+
+
+<script>
+    //document.getElementById("meu-elemento").innerHTML = "Criptografia e descriptografia";
+
+    var input = document.getElementById("input");
+    input.focus();
+
+    var output = document.getElementById("output");
+    input.focus();
+
+    var buttonCriptografar = document.getElementById("criptografar");
+    buttonCriptografar.onclick = function() {
+        var texto = input.value;
+        var textoCriptografado = "";
+        for (var i = 0; i < texto.length; i++) {
+            var letra = texto.charAt(i);
+            if (letra.toLowerCase() === "e" || letra.toLowerCase() === "é") {
+                letra = "enter";
+            } else if (letra.toLowerCase() === "i") {
+                letra = "imes";
+            } else if (letra.toLowerCase() === "a" || letra.toLowerCase() === "á") {
+                letra = "ai";
+            } else if (letra.toLowerCase() === "o" || letra.toLowerCase() === "ó") {
+                letra = "ober";
+            } else if (letra.toLowerCase() === "u") {
+                letra = "ufat";
+            } else if (letra.toLowerCase() === "?") {
+                letra = "ueb";
+            }
+            textoCriptografado += letra;
+        }
+        output.value = textoCriptografado;
+        input.focus();
+    };
+
+    var buttonDescriptografar = document.getElementById("descriptografar");
+    buttonDescriptografar.onclick = function() {
+    var textoCriptografado = input.value;
+    var textoDescriptografado = "";
+    var palavras = textoCriptografado.split(" ");
+
+    for (var i = 0; i < palavras.length; i++) {
+        var palavraCriptografada = palavras[i];
+        var palavraDescriptografada = "";
+
+        if (palavraCriptografada.toLowerCase() === "enter") {
+            palavraDescriptografada = "e";
+        } else if (palavraCriptografada.toLowerCase() === "imes") {
+            palavraDescriptografada = "i";
+        } else if (palavraCriptografada.toLowerCase() === "ai") {
+            palavraDescriptografada = "a";
+        } else if (palavraCriptografada.toLowerCase() === "ober") {
+            palavraDescriptografada = "o";
+        } else if (palavraCriptografada.toLowerCase() === "ufat") {
+            palavraDescriptografada = "u";
+        } else if (palavraCriptografada.toLowerCase() === "ueb") {
+            palavraDescriptografada = "?";
+        } else {
+            palavraDescriptografada = palavraCriptografada;
+        }
+
+        textoDescriptografado += palavraDescriptografada + " ";
+    }
+
+    output.value = textoDescriptografado.trim();
+};
+
+
+    function copiar() {
+    var texto = document.getElementById("output"); // obtém o elemento da caixa de texto
+        texto.select(); // seleciona o texto
+        document.execCommand("copy"); // copia o texto selecionado para a área de transferência
+        alert("Copiado com suesso!")
+        input.focus();
+    }
+
+
+    var buttonLimpar = document.getElementById("limpar");
+        buttonLimpar.onclick = function() {
+        input.value = "";
+        output.value = "";
+        input.focus();
+    };
+
+    function atualizarDataHora() {
+      var dataAtual = new Date();
+      var hora = dataAtual.getUTCHours() - 3; // ajuste para o horário de Brasília
+      var minuto = dataAtual.getUTCMinutes();
+      var segundo = dataAtual.getUTCSeconds();
+      var dia = dataAtual.getUTCDate();
+      var mes = dataAtual.getUTCMonth() + 1; // os meses são indexados a partir de zero
+      var ano = dataAtual.getUTCFullYear();
+      
+      // Formatação da data e hora
+      if (hora < 10) hora = "0" + hora;
+      if (minuto < 10) minuto = "0" + minuto;
+      if (segundo < 10) segundo = "0" + segundo;
+      if (dia < 10) dia = "0" + dia;
+      if (mes < 10) mes = "0" + mes;
+      var dataHora = dia + "/" + mes + "/" + ano + " " + hora + ":" + minuto + ":" + segundo;
+      
+      // Exibição da data e hora
+      document.getElementById("data-hora").innerHTML = "Data e hora em Brasília: " + dataHora;
+    }
+    
+    // Atualiza a data e hora a cada segundo
+    setInterval(atualizarDataHora, 10);
+
+</script>
