@@ -1,23 +1,22 @@
-##Tela de Criptografia - Challenge Alura - ONE T5
+## Tela de Criptografia - Challenge Alura - ONE T5
 
 Criptografia e Descriptografia
-Este projeto consiste em uma aplicação simples para criptografar e descriptografar texto. Foi desenvolvido por Vinícius Pelizzari como parte de um desafio proposto pelo programa One, sob responsabilidade da Alura e patrocinado pela Oracle.
+Este projeto consiste em uma aplicação simples para criptografar e descriptografar texto. Foi desenvolvido como parte de um desafio proposto pelo programa One, sob responsabilidade da Alura e patrocinado pela Oracle.
 
-##Funcionalidades
+## Funcionalidades
 - Criptografar: Transforma o texto inserido de acordo com as regras definidas no código.
 - Descriptografar: Reverte o texto criptografado para o texto original.
 - Copiar: Copia o texto resultante para a área de transferência.
 - Limpar: Limpa as caixas de texto de entrada e saída.
 
-- 
-##Utilização
+## Utilização
 - Insira o texto na primeira caixa de texto.
 - Clique no botão "Criptografar" para criptografar o texto.
 - Clique no botão "Descriptografar" para descriptografar o texto.
 - Clique no botão "Copiar" para copiar o texto resultante.
 - Para limpar as caixas de texto, clique no botão "Limpar".
 
-##Tecnologias
+## Tecnologias
 <div style="display: inline_block"><br>
   <img align="center" alt="mysql" height="60" width="70" src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg">
   <img align="center" alt="mysql" height="60" width="70" src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg">
